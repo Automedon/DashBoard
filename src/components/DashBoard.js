@@ -68,7 +68,7 @@ const DashBoard = () => {
       <div className="menu">{renderMenu}</div>
       <div className="dashboard">
         <Switch>
-            <Route exact path="/DashBoard" render={() => (
+            <Route exact path="/DashBoard/" render={() => (
                 <Redirect to="/DashBoard/Home"/>
             )}/>
           <Route path="/DashBoard/Home">
