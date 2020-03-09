@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/DashBoard/static/css/main.5c145b84.chunk.css",
+    "main.js": "/DashBoard/static/js/main.5557a727.chunk.js",
+    "main.js.map": "/DashBoard/static/js/main.5557a727.chunk.js.map",
+    "runtime-main.js": "/DashBoard/static/js/runtime-main.af087e3e.js",
+    "runtime-main.js.map": "/DashBoard/static/js/runtime-main.af087e3e.js.map",
+    "static/css/2.563af9af.chunk.css": "/DashBoard/static/css/2.563af9af.chunk.css",
+    "static/js/2.94cb6733.chunk.js": "/DashBoard/static/js/2.94cb6733.chunk.js",
+    "static/js/2.94cb6733.chunk.js.map": "/DashBoard/static/js/2.94cb6733.chunk.js.map",
+    "index.html": "/DashBoard/index.html",
+    "precache-manifest.7df2cde00fd9138dd902a6fd14e4386c.js": "/DashBoard/precache-manifest.7df2cde00fd9138dd902a6fd14e4386c.js",
+    "service-worker.js": "/DashBoard/service-worker.js",
+    "static/css/2.563af9af.chunk.css.map": "/DashBoard/static/css/2.563af9af.chunk.css.map",
+    "static/css/main.5c145b84.chunk.css.map": "/DashBoard/static/css/main.5c145b84.chunk.css.map",
+    "static/js/2.94cb6733.chunk.js.LICENSE.txt": "/DashBoard/static/js/2.94cb6733.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.af087e3e.js",
+    "static/css/2.563af9af.chunk.css",
+    "static/js/2.94cb6733.chunk.js",
+    "static/css/main.5c145b84.chunk.css",
+    "static/js/main.5557a727.chunk.js"
+  ]
+}
