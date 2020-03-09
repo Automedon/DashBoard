@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import {Link, Redirect, Route, Switch} from "react-router-dom";
+import { Link, Redirect, Route, Switch } from "react-router-dom";
 import HomeTab from "../containers/HomeTab";
 
 const Wrapper = styled.section`
@@ -68,9 +68,11 @@ const DashBoard = () => {
       <div className="menu">{renderMenu}</div>
       <div className="dashboard">
         <Switch>
-            <Route exact path="/DashBoard/" render={() => (
-                <Redirect to="/DashBoard/Home"/>
-            )}/>
+          <Route
+            exact
+            path="/DashBoard/"
+            render={() => <Redirect to="/DashBoard/Home" />}
+          />
           <Route path="/DashBoard/Home">
             <HomeTab />
           </Route>

@@ -8,21 +8,29 @@ const initState = {
   street: "Baverly",
   houseNumber: "42",
   postalCode: "100010",
-  country: "USA"
+  selectCountry: ["Austria", "Switzerland", "Germany"],
+  country: "Austria"
 };
 
 export default (state = initState, action) => {
   switch (action.type) {
     case CHANGE_MAIN: {
       const { userName, email, password, confirmPassword } = action.payload;
-      return { userName, email, password, confirmPassword, ...state };
+      return { ...state, userName, email, password, confirmPassword };
     }
     case CHANGE_ADDINF: {
       const { street, houseNumber, postalCode, country } = action.payload;
-      return { street, houseNumber, postalCode, country, ...state };
+
+      return {
+        ...state,
+        street,
+        houseNumber,
+        postalCode,
+        country
+      };
     }
     default: {
-      return state;
+      return { ...state };
     }
   }
 };

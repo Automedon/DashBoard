@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { connect } from "react-redux";
 import { changeAddInf, changeMainInf } from "../redux/actions/dashBoardActions";
 import { Formik, useField } from "formik";
-import { Button, Form as AntdForm, Input } from "antd";
+import { Button, Form as AntdForm, Input, Select } from "antd";
 import * as yup from "yup";
 import {
   Link,
@@ -12,6 +12,7 @@ import {
   Switch,
   useLocation
 } from "react-router-dom";
+import dashBoardReducer from "../redux/reducers/dashBoardReducer";
 
 const Wrapper = styled.div`
   min-height: 480px;
@@ -146,6 +147,42 @@ const FieldPassword = ({ placeholder, label, style, ...props }) => {
     </Item>
   );
 };
+const SelectField = ({
+  label,
+  style,
+  selectCountry,
+  defaultValue,
+  ...props
+}) => {
+  const [field, meta] = useField(props);
+  const errorText = meta.error && meta.touched ? meta.error : "";
+  const validateStatus = meta.error && meta.touched ? "error" : "success";
+  const Options =
+    selectCountry &&
+    selectCountry.map(country => (
+      <Select.Option value={country} key={Math.random()}>
+        {country}
+      </Select.Option>
+    ));
+  return (
+    <Item
+      {...field}
+      style={style}
+      label={label}
+      help={errorText}
+      validateStatus={validateStatus}
+      hasFeedback={meta.touched}
+    >
+      <Select
+        name="country"
+        placeholder={defaultValue}
+        onChange={country => props.setFieldValue("country", country)}
+      >
+        {Options}
+      </Select>
+    </Item>
+  );
+};
 
 const PasswordLine = styled.div`
   width: 15px;
@@ -165,7 +202,8 @@ const HomeTab = props => {
     street,
     houseNumber,
     postalCode,
-    country
+    country,
+    selectCountry
   } = props.dash;
   const MainInfo = () => {
     return (
@@ -193,7 +231,12 @@ const HomeTab = props => {
                   2
                 )
               );
-              props.changeMainInf(userName, email, password, confirmPassword);
+              props.changeMainInf({
+                userName,
+                email,
+                password,
+                confirmPassword
+              });
             }}
           >
             {({ values, isSubmitting, handleSubmit }) => (
@@ -264,10 +307,10 @@ const HomeTab = props => {
                   2
                 )
               );
-              props.changeAddInf(street, houseNumber, postalCode, country);
+              props.changeAddInf({ street, houseNumber, postalCode, country });
             }}
           >
-            {({ values, isSubmitting, handleSubmit }) => (
+            {({ values, isSubmitting, handleSubmit, setFieldValue }) => (
               <AntdForm {...formItemLayout} onFinish={handleSubmit}>
                 <FieldInput
                   placeholder={"Street"}
@@ -287,11 +330,12 @@ const HomeTab = props => {
                   name={"postalCode"}
                   defaultValue={values.postalCode}
                 />
-                <FieldInput
-                  placeholder={"Country"}
+                <SelectField
                   label={"Country"}
                   name={"country"}
-                  defaultValue={values.country}
+                  selectCountry={selectCountry}
+                  defaultValue={country}
+                  setFieldValue={setFieldValue}
                 />
 
                 <Item {...tailLayout}>
@@ -332,7 +376,7 @@ const HomeTab = props => {
 
 const mapProps = state => {
   return {
-    dash: state.dash
+    dash: state.dashBoardReducer
   };
 };
 
